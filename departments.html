@@ -1,168 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Departments - Ashabesuffa Foundation</title>
   <meta name="description" content="Explore the academic and welfare departments of Ashabesuffa Foundation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-title-key="nav.departments">
 
-  <!-- Top Bar -->
   <div class="topbar">
     <div class="container">
       <div class="topbar-left">
-        <span>🕌 Ashabesuffa Foundation</span>
+        <span>🕌 <span data-i18n="brand.name">Ashabesuffa Foundation</span></span>
       </div>
       <div class="topbar-right">
         <a href="tel:+923001234567">📞 +92 300 1234567</a>
         <a href="mailto:info@ashabesuffa.org">✉ info@ashabesuffa.org</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ur">اردو</button>
+          <button class="lang-btn" data-lang="ar">عربي</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
   <header>
     <div class="container nav">
       <a href="index.html" class="logo">
         <span class="logo-mark">ع</span>
         <span class="logo-text">
-          Ashabesuffa Foundation
-          <small>Knowledge • Faith • Service</small>
+          <span data-i18n="brand.name">Ashabesuffa Foundation</span>
+          <small data-i18n="brand.tagline">Knowledge • Faith • Service</small>
         </span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="departments.html" class="active">Departments</a></li>
-        <li><a href="admissions.html">Admissions</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="admissions.html" class="btn btn-primary btn-sm">Apply Now</a></li>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="departments.html" class="active" data-i18n="nav.departments">Departments</a></li>
+        <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="news.html" data-i18n="nav.news">News</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="admissions.html" class="btn btn-primary btn-sm" data-i18n="nav.apply">Apply Now</a></li>
       </ul>
     </div>
   </header>
 
   <main>
 
-    <!-- Page Header -->
     <section class="page-header">
       <div class="container">
-        <h1>Our Departments</h1>
-        <p>Comprehensive programs for Islamic learning and community development.</p>
+        <h1 data-i18n="page.departments.title">Our Departments</h1>
+        <p data-i18n="page.departments.subtitle">Comprehensive programs for Islamic learning and community development.</p>
       </div>
     </section>
 
-    <!-- Departments Grid -->
     <section class="section">
       <div class="container">
         <div class="grid grid-2">
           <div class="card">
             <div class="card-icon">📖</div>
-            <h3>Hifz & Tajweed</h3>
-            <p>
-              Our Hifz program is designed for students who wish to memorize the Holy Quran
-              with proper Tajweed. Experienced teachers guide students through a structured
-              curriculum, ensuring correct pronunciation and understanding.
-            </p>
-            <ul style="margin-top:0.75rem;display:grid;gap:0.35rem;">
-              <li>✅ Full-time and part-time options</li>
-              <li>✅ Individual attention</li>
-              <li>✅ Tajweed rules and practice</li>
-              <li>✅ Annual competitions</li>
-            </ul>
+            <h3 data-i18n="dept.hifz">Hifz & Tajweed</h3>
+            <p data-i18n="dept.hifz.desc">Memorization and correct recitation of the Holy Quran with qualified teachers.</p>
           </div>
           <div class="card">
             <div class="card-icon">🕌</div>
-            <h3>Dars-e-Nizami</h3>
-            <p>
-              The Dars-e-Nizami is an eight-year comprehensive Islamic scholarship program
-              covering Arabic grammar, literature, Fiqh, Hadith, Tafsir, and Islamic history.
-              Graduates receive a recognized degree equivalent to M.A. in Islamic Studies.
-            </p>
-            <ul style="margin-top:0.75rem;display:grid;gap:0.35rem;">
-              <li>✅ Eight-year structured curriculum</li>
-              <li>✅ Qualified scholars as teachers</li>
-              <li>✅ Specialization in Hadith and Fiqh</li>
-              <li>✅ Recognized certification</li>
-            </ul>
+            <h3 data-i18n="dept.dars">Dars-e-Nizami</h3>
+            <p data-i18n="dept.dars.desc">Traditional eight-year Islamic scholarship program covering Arabic, Fiqh, Hadith, and Tafsir.</p>
           </div>
           <div class="card">
             <div class="card-icon">🎓</div>
-            <h3>Primary Education</h3>
-            <p>
-              Our primary education department provides a balanced curriculum that combines
-              modern subjects with Islamic education. We focus on building a strong foundation
-              in both academics and character.
-            </p>
-            <ul style="margin-top:0.75rem;display:grid;gap:0.35rem;">
-              <li>✅ Modern curriculum up to Matric</li>
-              <li>✅ Islamic studies and Quran</li>
-              <li>✅ Experienced teaching staff</li>
-              <li>✅ Co-curricular activities</li>
-            </ul>
+            <h3 data-i18n="dept.primary">Primary Education</h3>
+            <p data-i18n="dept.primary.desc">Modern curriculum combined with Islamic values for young learners.</p>
           </div>
           <div class="card">
             <div class="card-icon">🤝</div>
-            <h3>Welfare & Dawah</h3>
-            <p>
-              Our welfare department serves the community through various initiatives,
-              including food distribution, orphan support, medical assistance, and
-              Islamic outreach programs.
-            </p>
-            <ul style="margin-top:0.75rem;display:grid;gap:0.35rem;">
-              <li>✅ Monthly food packages</li>
-              <li>✅ Orphan sponsorship</li>
-              <li>✅ Medical camps</li>
-              <li>✅ Dawah and counseling</li>
-            </ul>
+            <h3 data-i18n="dept.welfare">Welfare & Dawah</h3>
+            <p data-i18n="dept.welfare.desc">Food distribution, orphan support, counseling, and community outreach.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="section section-alt">
       <div class="container">
         <div class="donation-cta">
-          <h2>Interested in Joining?</h2>
-          <p>Admissions are open for the new academic year. Apply today.</p>
-          <a href="admissions.html" class="btn btn-accent">View Admissions</a>
+          <h2 data-i18n="admissions.title">Admissions</h2>
+          <p data-i18n="admissions.subtitle">Join Ashabesuffa Foundation. Online registration and entrance details.</p>
+          <a href="admissions.html" class="btn btn-accent" data-i18n="nav.apply">Apply Now</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>Ashabesuffa Foundation</h4>
-          <p>An Islamic educational and welfare foundation serving the community through knowledge, faith, and compassion.</p>
+          <h4 data-i18n="brand.name">Ashabesuffa Foundation</h4>
+          <p data-i18n="footer.about">An Islamic educational and welfare foundation serving the community through knowledge, faith, and compassion.</p>
         </div>
         <div>
-          <h4>Quick Links</h4>
+          <h4 data-i18n="footer.quicklinks">Quick Links</h4>
           <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="departments.html">Departments</a>
-            <a href="admissions.html">Admissions</a>
-            <a href="contact.html">Contact</a>
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="departments.html" data-i18n="nav.departments">Departments</a>
+            <a href="admissions.html" data-i18n="nav.admissions">Admissions</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
           </div>
         </div>
         <div>
-          <h4>Departments</h4>
+          <h4 data-i18n="footer.departments">Departments</h4>
           <div class="footer-links">
-            <a href="departments.html">Hifz & Tajweed</a>
-            <a href="departments.html">Dars-e-Nizami</a>
-            <a href="departments.html">Primary Education</a>
-            <a href="departments.html">Welfare & Dawah</a>
+            <a href="departments.html" data-i18n="dept.hifz">Hifz & Tajweed</a>
+            <a href="departments.html" data-i18n="dept.dars">Dars-e-Nizami</a>
+            <a href="departments.html" data-i18n="dept.primary">Primary Education</a>
+            <a href="departments.html" data-i18n="dept.welfare">Welfare & Dawah</a>
           </div>
         </div>
         <div>
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <div class="footer-links">
             <a href="#">Facebook</a>
             <a href="#">YouTube</a>
@@ -172,13 +136,15 @@
         </div>
       </div>
       <div class="footer-bottom">
-        © <span id="year"></span> Ashabesuffa Foundation. All rights reserved.
+        © <span id="year"></span> <span data-i18n="brand.name">Ashabesuffa Foundation</span>. <span data-i18n="footer.rights">All rights reserved.</span>
       </div>
     </div>
   </footer>
 
   <a class="whatsapp" href="https://wa.me/923001234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
+  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

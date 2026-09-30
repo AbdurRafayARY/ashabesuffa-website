@@ -1,0 +1,49 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../includes/security.php';
+require_admin();
+if ($_SESSION['admin_role'] !== 'admin') { die('Access denied'); }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = (int)($_POST['id'] ?? 0);
+    $u = clean_input($_POST['username'] ?? '');
+    $e = clean_input($_POST['email'] ?? '');
+    $n = clean_input($_POST['full_name'] ?? '');
+    $r = $_POST['role'] ?? 'editor';
+    $p = $_POST['password'] ?? '';
+    if ($id) {
+        if ($p) db()->prepare("UPDATE users SET username=?, email=?, full_name=?, role=?, password_hash=? WHERE id=?")->execute([$u,$e,$n,$r,password_hash($p, PASSWORD_DEFAULT),$id]);
+        else db()->prepare("UPDATE users SET username=?, email=?, full_name=?, role=? WHERE id=?")->execute([$u,$e,$n,$r,$id]);
+    } else {
+        db()->prepare("INSERT INTO users (username, email, full_name, role, password_hash) VALUES (?,?,?,?,?)")
+            ->execute([$u,$e,$n,$r,password_hash($p ?: 'ChangeMe123', PASSWORD_DEFAULT)]);
+    }
+    redirect(BASE_URL . 'admin/users.php');
+}
+$users = db()->query("SELECT * FROM users ORDER BY id")->fetchAll();
+?>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Users</title>
+<link rel="stylesheet" href="<?= BASE_URL ?>css/style.css"><link rel="stylesheet" href="<?= BASE_URL ?>css/admin.css"></head>
+<body class="admin-body">
+<?php require __DIR__ . '/includes/admin-header.php'; ?>
+<main class="admin-main">
+  <h1>Users</h1>
+  <form method="post" class="admin-form">
+    <div class="form-group"><label>Username</label><input name="username" required></div>
+    <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+    <div class="form-group"><label>Full Name</label><input name="full_name" required></div>
+    <div class="form-group"><label>Role</label>
+      <select name="role"><option>admin</option><option>editor</option><option>author</option></select></div>
+    <div class="form-group"><label>Password (leave empty to keep current)</label><input type="password" name="password"></div>
+    <button class="btn btn-primary">Add User</button>
+  </form>
+  <table class="admin-table mt-3">
+    <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Name</th><th>Role</th><th>Last Login</th></tr></thead>
+    <tbody>
+    <?php foreach ($users as $u): ?>
+      <tr><td><?= (int)$u['id'] ?></td><td><?= e($u['username']) ?></td><td><?= e($u['email']) ?></td><td><?= e($u['full_name']) ?></td><td><?= e($u['role']) ?></td><td><?= e($u['last_login'] ?: 'Never') ?></td></tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+</main>
+<?php require __DIR__ . '/includes/admin-footer.php'; ?>

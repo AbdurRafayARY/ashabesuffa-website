@@ -1,6 +1,7 @@
-/* ============================================
-   Ashabesuffa Foundation - Main Stylesheet
-   ============================================ */
+/* ============================================================
+   Ashabesuffa Foundation - Complete Stylesheet
+   Supports LTR (English) + RTL (Urdu, Arabic)
+   ============================================================ */
 
 :root {
   --primary: #0b6e4f;
@@ -18,6 +19,9 @@
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
   --transition: 0.25s ease;
+  --font-en: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-ur: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+  --font-ar: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
 }
 
 * {
@@ -31,11 +35,26 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--font-en);
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
   font-size: 16px;
+  transition: var(--transition);
+}
+
+body.lang-ur {
+  font-family: var(--font-ur);
+  direction: rtl;
+  text-align: right;
+  line-height: 2;
+}
+
+body.lang-ar {
+  font-family: var(--font-ar);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.9;
 }
 
 a {
@@ -54,20 +73,27 @@ ul {
 }
 
 .container {
-  width: min(1140px, 92%);
+  width: min(1200px, 92%);
   margin-inline: auto;
 }
 
 /* ---------- Typography ---------- */
-h1, h2, h3, h4 {
-  line-height: 1.2;
+h1, h2, h3, h4, h5 {
+  line-height: 1.3;
   color: var(--primary-dark);
   font-weight: 700;
 }
 
+body.lang-ur h1,
+body.lang-ur h2,
+body.lang-ur h3,
+body.lang-ur h4 {
+  line-height: 1.9;
+}
+
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
-h3 { font-size: 1.25rem; }
+h3 { font-size: 1.3rem; }
 h4 { font-size: 1.1rem; }
 
 p {
@@ -167,6 +193,32 @@ p {
   flex-wrap: wrap;
 }
 
+/* ---------- Language Switcher ---------- */
+.lang-switcher {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #d1fae5;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+  background: var(--accent);
+  color: var(--primary-dark);
+  border-color: var(--accent);
+}
+
 /* ---------- Header / Navigation ---------- */
 header {
   background: var(--white);
@@ -181,6 +233,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 0;
+  gap: 1rem;
 }
 
 .logo {
@@ -190,17 +243,18 @@ header {
   font-weight: 800;
   color: var(--primary);
   font-size: 1.15rem;
+  flex-shrink: 0;
 }
 
 .logo-mark {
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: var(--primary);
   color: var(--white);
   display: grid;
   place-items: center;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -211,6 +265,11 @@ header {
   font-weight: 500;
   color: var(--muted);
   letter-spacing: 0.5px;
+}
+
+body.lang-ur .logo-text small,
+body.lang-ar .logo-text small {
+  letter-spacing: 0;
 }
 
 .nav-links {
@@ -250,7 +309,7 @@ header {
     url("https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=1600&q=80")
     center/cover no-repeat;
   color: var(--white);
-  padding: 6rem 0;
+  padding: 7rem 0;
   text-align: center;
 }
 
@@ -261,9 +320,9 @@ header {
 
 .hero p {
   color: rgba(255, 255, 255, 0.92);
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto 2rem;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .hero-actions {
@@ -280,7 +339,7 @@ header {
     url("https://images.unsplash.com/photo-1564769662533-4f00a87b4056?auto=format&fit=crop&w=1600&q=80")
     center/cover no-repeat;
   color: var(--white);
-  padding: 3.5rem 0;
+  padding: 4rem 0;
   text-align: center;
 }
 
@@ -291,13 +350,13 @@ header {
 
 .page-header p {
   color: rgba(255, 255, 255, 0.9);
-  max-width: 650px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 /* ---------- Sections ---------- */
 .section {
-  padding: 4.5rem 0;
+  padding: 5rem 0;
 }
 
 .section-alt {
@@ -306,7 +365,7 @@ header {
 
 .section-title {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .section-title h2 {
@@ -314,7 +373,7 @@ header {
 }
 
 .section-title p {
-  max-width: 650px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -340,7 +399,7 @@ header {
 .card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 2rem;
   box-shadow: var(--shadow-sm);
   border-top: 4px solid var(--accent);
   transition: var(--transition);
@@ -356,7 +415,7 @@ header {
 
 .card h3 {
   color: var(--primary);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .card p {
@@ -365,15 +424,16 @@ header {
 }
 
 .card-icon {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: var(--primary-light);
   color: var(--primary);
   display: grid;
   place-items: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 /* ---------- About ---------- */
@@ -392,7 +452,7 @@ header {
 
 .about-img img {
   width: 100%;
-  height: 400px;
+  height: 420px;
   object-fit: cover;
 }
 
@@ -433,7 +493,7 @@ header {
 .admission-list li {
   background: var(--white);
   padding: 1.25rem 1.5rem;
-  border-left: 5px solid var(--primary);
+  border-inline-start: 5px solid var(--primary);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -466,6 +526,12 @@ header {
   margin-bottom: 0.35rem;
 }
 
+body.lang-ur .news-date,
+body.lang-ar .news-date {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 /* ---------- Gallery ---------- */
 .gallery-grid {
   display: grid;
@@ -476,9 +542,10 @@ header {
 .gallery-item {
   border-radius: var(--radius-sm);
   overflow: hidden;
-  height: 200px;
+  height: 220px;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
+  position: relative;
 }
 
 .gallery-item:hover {
@@ -492,14 +559,43 @@ header {
   object-fit: cover;
 }
 
+.gallery-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 78, 59, 0.8), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  color: #fff;
+  font-weight: 700;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
 /* ---------- Donation CTA ---------- */
 .donation-cta {
   background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   color: var(--white);
   border-radius: var(--radius);
-  padding: 3rem 2rem;
+  padding: 3.5rem 2rem;
   text-align: center;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-cta::before {
+  content: "☪";
+  position: absolute;
+  font-size: 15rem;
+  opacity: 0.05;
+  top: -3rem;
+  inset-inline-end: -2rem;
+  color: #fff;
 }
 
 .donation-cta h2 {
@@ -509,7 +605,7 @@ header {
 
 .donation-cta p {
   color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto 1.75rem;
 }
 
@@ -538,12 +634,21 @@ input,
 textarea,
 select {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 0.85rem 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   font: inherit;
   background: #fafafa;
   transition: var(--transition);
+}
+
+body.lang-ur input,
+body.lang-ur textarea,
+body.lang-ur select,
+body.lang-ar input,
+body.lang-ar textarea,
+body.lang-ar select {
+  text-align: right;
 }
 
 input:focus,
@@ -557,7 +662,7 @@ select:focus {
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 130px;
 }
 
 /* ---------- Contact Info ---------- */
@@ -580,8 +685,12 @@ textarea {
   font-size: 1.5rem;
   color: var(--primary);
   flex-shrink: 0;
-  width: 40px;
-  text-align: center;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-light);
+  border-radius: 50%;
 }
 
 .contact-item h4 {
@@ -599,7 +708,7 @@ textarea {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   margin-top: 1.5rem;
-  height: 300px;
+  height: 320px;
   background: var(--primary-light);
   display: grid;
   place-items: center;
@@ -611,7 +720,7 @@ textarea {
 footer {
   background: var(--primary-dark);
   color: #d1fae5;
-  padding: 3.5rem 0 1.5rem;
+  padding: 4rem 0 1.5rem;
 }
 
 .footer-grid {
@@ -658,7 +767,7 @@ footer a:hover {
 /* ---------- WhatsApp Button ---------- */
 .whatsapp {
   position: fixed;
-  right: 20px;
+  inset-inline-end: 20px;
   bottom: 20px;
   background: #25d366;
   color: var(--white);
@@ -676,6 +785,37 @@ footer a:hover {
 .whatsapp:hover {
   transform: scale(1.1);
   background: #1ebe5d;
+}
+
+/* ---------- Back to Top ---------- */
+.back-to-top {
+  position: fixed;
+  inset-inline-end: 20px;
+  bottom: 90px;
+  background: var(--primary);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  cursor: pointer;
+  border: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--primary-dark);
 }
 
 /* ---------- Utility ---------- */
@@ -700,8 +840,8 @@ footer a:hover {
   .nav-links {
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     background: var(--white);
     flex-direction: column;
     padding: 1.5rem;
@@ -735,7 +875,7 @@ footer a:hover {
   }
 
   .hero {
-    padding: 4rem 0;
+    padding: 4.5rem 0;
   }
 
   .section {

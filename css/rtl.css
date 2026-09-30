@@ -1,0 +1,6 @@
+/* RTL overrides for Urdu & Arabic */
+body.lang-ur, body.lang-ar { direction: rtl; text-align: right; }
+body.lang-ur .nav-links, body.lang-ar .nav-links { flex-direction: row-reverse; }
+body.lang-ur .footer-links, body.lang-ar .footer-links { text-align: right; }
+body.lang-ur .topbar-right, body.lang-ar .topbar-right { flex-direction: row-reverse; }
+body.lang-ur .card-icon, body.lang-ar .card-icon { margin-inline-start: 0; margin-inline-end: 0; }

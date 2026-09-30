@@ -1,0 +1,103 @@
+/* ============================================================
+   Ashabesuffa Foundation - Admin Panel Styles
+   ============================================================ */
+
+.admin-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #064e3b, #0b6e4f);
+  padding: 2rem;
+}
+
+.login-box {
+  background: #fff;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.3);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.login-box h1 { color: var(--primary-dark); margin-bottom: .5rem; }
+.login-box p { color: var(--muted); margin-bottom: 1.5rem; }
+.login-box form { background: none; box-shadow: none; padding: 0; }
+.login-box .form-group { text-align: left; }
+.login-box .btn { width: 100%; }
+.login-box code { background: #f3f4f6; padding: .15rem .4rem; border-radius: 4px; font-size: .85rem; }
+
+.admin-body { background: #f1f5f9; }
+
+.admin-header {
+  background: #064e3b;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-logo { color: #fff; font-weight: 800; font-size: 1.15rem; }
+.admin-nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.admin-nav a { color: #d1fae5; font-size: .9rem; font-weight: 600; }
+.admin-nav a:hover { color: #fff; }
+
+.admin-main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+.admin-main h1 { color: #064e3b; margin-bottom: 1.5rem; }
+.admin-main h2 { color: #064e3b; margin: 1.5rem 0 1rem; }
+
+.admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.stat-card {
+  background: #fff; padding: 1.5rem; border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06); text-align: center;
+  border-top: 4px solid #d4af37;
+}
+.stat-card strong { display: block; font-size: 2rem; color: #0b6e4f; }
+.stat-card span { color: #6b7280; font-size: .9rem; }
+
+.admin-table {
+  width: 100%; border-collapse: collapse; background: #fff;
+  border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.admin-table th, .admin-table td {
+  padding: .85rem 1rem; text-align: left; border-bottom: 1px solid #e5e7eb;
+  font-size: .92rem;
+}
+.admin-table th { background: #f9fafb; font-weight: 700; color: #064e3b; }
+.admin-table tr:hover { background: #f9fafb; }
+
+.badge {
+  display: inline-block; padding: .2rem .6rem; border-radius: 999px;
+  font-size: .75rem; font-weight: 700; text-transform: uppercase;
+  background: #e5e7eb; color: #374151;
+}
+.badge-published { background: #d1fae5; color: #065f46; }
+.badge-draft { background: #fef3c7; color: #92400e; }
+.badge-archived { background: #e5e7eb; color: #374151; }
+
+.admin-form {
+  background: #fff; padding: 1.5rem; border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06); display: grid; gap: 1rem;
+  max-width: 800px;
+}
+.admin-form .form-group { display: grid; gap: .35rem; }
+.admin-form label { font-weight: 600; font-size: .9rem; color: #064e3b; }
+.admin-form input, .admin-form textarea, .admin-form select {
+  padding: .7rem .9rem; border: 1px solid #e5e7eb; border-radius: 8px;
+  font: inherit; background: #fafafa;
+}
+.admin-form input:focus, .admin-form textarea:focus, .admin-form select:focus {
+  outline: none; border-color: #0b6e4f; background: #fff;
+}
+
+.admin-footer { text-align: center; padding: 2rem; color: #6b7280; font-size: .9rem; }
+
+@media (max-width: 768px) {
+  .admin-header { flex-direction: column; align-items: flex-start; }
+  .admin-main { padding: 1rem; }
+  .admin-table { font-size: .85rem; }
+  .admin-table th, .admin-table td { padding: .5rem; }
+}

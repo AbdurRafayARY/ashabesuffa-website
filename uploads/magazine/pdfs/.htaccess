@@ -1,0 +1,21 @@
+<FilesMatch ".*">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "\.pdf$">
+  Require all granted
+</FilesMatch>
+
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag engine off
+</IfModule>
+
+Options -Indexes -ExecCGI
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Content-Disposition "inline"
+</IfModule>

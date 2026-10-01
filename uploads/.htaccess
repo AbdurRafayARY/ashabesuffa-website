@@ -1,0 +1,42 @@
+# ============================================================
+# Ashabesuffa Foundation — Uploads Root Protection
+# ============================================================
+
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phps|phtm|shtml|pl|py|cgi|asp|aspx|sh|bash|exe|dll|so|jar|vbs|cmd|bat|com|msi|scr)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag engine off
+</IfModule>
+
+Options -Indexes -ExecCGI
+
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|pdf|doc|docx|xls|xlsx|txt|csv)$">
+  Require all granted
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Download-Options "noopen"
+</IfModule>
+
+AddType image/jpeg .jpg .jpeg
+AddType image/png .png
+AddType image/gif .gif
+AddType image/webp .webp
+AddType image/svg+xml .svg
+AddType application/pdf .pdf
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/gif "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType application/pdf "access plus 30 days"
+</IfModule>

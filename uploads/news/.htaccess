@@ -1,0 +1,24 @@
+
+## 2.4 `uploads/news/.htaccess`
+
+```apache
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phps|pl|py|cgi|asp|aspx|sh|bash|exe|dll|so|jar|vbs|cmd|bat|com|msi|scr|js|html|htm)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag engine off
+</IfModule>
+
+Options -Indexes -ExecCGI
+
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+  Require all granted
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>

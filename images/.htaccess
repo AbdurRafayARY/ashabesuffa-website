@@ -1,0 +1,37 @@
+# Ashabesuffa Foundation — Images folder
+# Allow images only, deny scripts, no directory listing
+
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phps|pl|py|cgi|asp|aspx|sh|bash|exe|dll|so|jar|vbs|cmd|bat|com|msi|scr|js|html|htm)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag engine off
+</IfModule>
+
+Options -Indexes -ExecCGI
+
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+  Require all granted
+</FilesMatch>
+
+AddType image/svg+xml .svg
+AddType image/x-icon .ico
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Cache-Control "public, max-age=2592000"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/gif "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+</IfModule>
